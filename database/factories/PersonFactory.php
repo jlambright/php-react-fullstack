@@ -9,7 +9,7 @@ $factory->define(Person::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'email_address' => $faker->email,
+        'email_address' => $faker->safeEmail,
         'status' => (bool)random_int(0, 1) ? 'active' : 'archived'
     ];
 });
