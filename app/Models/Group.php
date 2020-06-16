@@ -17,6 +17,8 @@ class Group extends Model
      */
     public function members()
     {
-        return $this->belongsToMany(Person::class, 'group_members');
+        return $this->belongsToMany(Person::class, 'group_members')
+            ->as('memberships')
+            ->withTimestamps();
     }
 }
