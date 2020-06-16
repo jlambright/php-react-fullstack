@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Group;
+use App\Models\Person;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
