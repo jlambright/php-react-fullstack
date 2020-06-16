@@ -2,7 +2,7 @@ version: "3.4"
 services:
 #    app:
 #        env_file:
-#          - .env
+#          - "./.env"
 #        volumes:
 #            - "./:/app"
 #        working_dir: /app
@@ -13,8 +13,7 @@ services:
 #            context: docker/php
 #            dockerfile: dev.Dockerfile
     db:
-        env_file:
-          - .env
+        env_file: .env
         image: mariadb
         ports:
             - 3306:3306

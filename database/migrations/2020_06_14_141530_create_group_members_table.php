@@ -15,10 +15,8 @@ class CreateGroupMembersTable extends Migration
     {
         Schema::create('group_members', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('group_id')->unsigned();
-            $table->bigInteger('person_id')->unsigned();
-            $table->foreignId('group_id')->constrained('groups')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('person_id')->constrained('person')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('group_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('person_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

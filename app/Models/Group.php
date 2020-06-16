@@ -7,6 +7,7 @@ use App\Models\Person;
 
 class Group extends Model
 {
+    protected $table = 'groups';
     protected $fillable = [
         'group_name'
     ];
@@ -14,10 +15,8 @@ class Group extends Model
     /**
      * The people that belong to a group.
      */
-    public function people()
+    public function members()
     {
-        return $this->belongsToMany(Group::class, 'group_members', 'group_id', 'person_id')
-            ->as('members')
-            ->withTimestamps();
+        return $this->belongsToMany(Person::class, 'group_members');
     }
 }
