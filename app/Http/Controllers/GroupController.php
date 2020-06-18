@@ -6,7 +6,6 @@ use App\Http\Resources\GroupsCollection;
 use App\Http\Resources\GroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 
 class GroupController extends Controller
