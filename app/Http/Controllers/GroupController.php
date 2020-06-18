@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupsCollection;
+use App\Http\Resources\GroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 
 class GroupController extends Controller
 {
@@ -14,7 +18,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return new GroupsCollection(Group::all());
     }
 
     /**
@@ -31,11 +35,19 @@ class GroupController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|object
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'    => 'required|max:255'
+        ]);
+
+        $group = Group::create($request->all());
+
+        return (new GroupResource($group))
+            ->response()
+            ->setStatusCode(201);
     }
 
     /**
