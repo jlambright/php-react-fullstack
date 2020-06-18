@@ -5,6 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Group;
 
+
+/**
+ * Class Person
+ *
+ * @mixin Model
+ * @package App\Models
+ */
 class Person extends Model
 {
     protected $table = 'people';
