@@ -6,11 +6,11 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8000/api"
+            "url": "http://localhost"
         }
     ],
     "paths": {
-        "/people": {
+        "/api/people": {
             "get": {
                 "summary": "Display a listing of the resource."
             },
@@ -18,7 +18,7 @@
                 "summary": "Store a newly created resource in storage."
             }
         },
-        "/people/{person}": {
+        "/api/people/{person}": {
             "get": {
                 "summary": "Display the specified resource.",
                 "parameters": [
@@ -59,7 +59,7 @@
                 ]
             }
         },
-        "/group": {
+        "/api/groups": {
             "get": {
                 "summary": "Display a listing of the resource."
             },
@@ -67,7 +67,7 @@
                 "summary": "Store a newly created group resource in storage."
             }
         },
-        "/group/{group}": {
+        "/api/groups/{group}": {
             "get": {
                 "summary": "Display the specified resource.",
                 "parameters": [
