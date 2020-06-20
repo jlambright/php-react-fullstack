@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use L5Swagger\L5SwaggerServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -6,25 +6,18 @@ use App\Http\Resources\GroupsCollection;
 use App\Http\Resources\GroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
-use Psy\Util\Json;
 
-use Vyuldashev\LaravelOpenApi\Annotations as OpenApi;
-
-/**
- * @OpenApi\PathItem()
- */
 
 class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return GroupsCollection
-     * @OpenApi\Operation()
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return new GroupsCollection(Group::paginate());
+        return new GroupsCollection(Group::all());
     }
 
     /**
@@ -42,7 +35,6 @@ class GroupController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|object
-     * @OpenApi\Operation()
      */
     public function store(Request $request)
     {
@@ -60,21 +52,10 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @return GroupResource
-     * @OpenApi\Operation()
+     * @param  \App\Models\Group  $group
+     * @return \Illuminate\Http\Response
      */
-    public function show($id) : GroupResource
-    {
-        return new GroupResource(Group::findOrFail($id));
-    }
-
-    /**
-     * @param Request $request
-     * @param Group $group
-     * @OpenApi\Operation()
-     */
-    public function filter(Request $request, Group $group)
+    public function show(Group $group)
     {
         //
     }
@@ -94,30 +75,22 @@ class GroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Group
-     * @return \Illuminate\Http\JsonResponse
-     * @OpenApi\Operation()
+     * @param  \App\Models\Group  $group
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Group $group)
     {
-        $group = Group::findOrFail($id);
-        $group->update($request->all());
-
-        return response()->json(null, 204);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Group
-     * @return \Illuminate\Http\JsonResponse
-     * @OpenApi\Operation()
+     * @param  \App\Models\Group  $group
+     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
-        $group = Group::findOrFail($id);
-        $group->delete();
-
-        return response()->json(null, 204);
+        //
     }
 }
