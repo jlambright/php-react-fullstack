@@ -20,7 +20,7 @@
                         "description": "Display archived people too.",
                         "required": false,
                         "schema": {
-                            "type": "string"
+                            "type": "boolean"
                         }
                     }
                 ]
@@ -80,7 +80,7 @@
                         "description": "Display archived groups too.",
                         "required": false,
                         "schema": {
-                            "type": "string"
+                            "type": "boolean"
                         }
                     }
                 ]
