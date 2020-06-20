@@ -9,16 +9,22 @@ use App\Http\Resources\PeopleCollection;
 use App\Http\Resources\PersonResource;
 use App\Models\Person;
 
+use Vyuldashev\LaravelOpenApi\Annotations as OpenApi;
+
+/**
+ * @OpenApi\PathItem()
+ */
 class PeopleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return PeopleCollection
+     * @OpenApi\Operation()
      */
     public function index()
     {
-        return new PeopleCollection(Person::all());
+        return new PeopleCollection(Person::paginate());
     }
 
     /**
@@ -36,6 +42,7 @@ class PeopleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|object
+     * @OpenApi\Operation()
      */
     public function store(Request $request)
     {
@@ -57,9 +64,10 @@ class PeopleController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return PersonResource
+     * @OpenApi\Operation()
      */
-    public function show($id)
+    public function show($id) : PersonResource
     {
         return new PersonResource(Person::findOrFail($id));
     }
@@ -80,7 +88,8 @@ class PeopleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @OpenApi\Operation()
      */
     public function update(Request $request, $id)
     {
@@ -94,7 +103,8 @@ class PeopleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @OpenApi\Operation()
      */
     public function destroy($id)
     {

@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "1613215b-aa50-4816-82d7-9b22628c3b34",
+		"name": "Person-Group API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "people",
+			"item": [
+				{
+					"name": "{person}",
+					"item": [
+						{
+							"name": "Display the specified resource.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/:person",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										":person"
+									],
+									"variable": [
+										{
+											"id": "63e51309-de4f-47ce-8209-ac7dd6ed505a",
+											"key": "person",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update the specified resource in storage.",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/:person",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										":person"
+									],
+									"variable": [
+										{
+											"id": "b9160831-a801-4213-bc0e-0669788a42d0",
+											"key": "person",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove the specified resource from storage.",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/people/:person",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"people",
+										":person"
+									],
+									"variable": [
+										{
+											"id": "6ed1a4b8-c4c0-4456-8d0d-03500b50df98",
+											"key": "person",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Display a listing of the resource.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store a newly created resource in storage.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "{group}",
+					"item": [
+						{
+							"name": "Display the specified resource.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/group/:group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										":group"
+									],
+									"variable": [
+										{
+											"id": "43386112-fa72-4aba-859f-75a2c20b3e76",
+											"key": "group",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update the specified resource in storage.",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/group/:group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										":group"
+									],
+									"variable": [
+										{
+											"id": "17532b95-64de-4554-87b9-274bfdd8bec6",
+											"key": "group",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove the specified resource from storage.",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/group/:group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"group",
+										":group"
+									],
+									"variable": [
+										{
+											"id": "6d6b771f-8048-41f4-b30b-f58e0a84bc33",
+											"key": "group",
+											"value": "<string>",
+											"type": "string",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Display a listing of the resource.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/group",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store a newly created resource in storage.",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/group",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"group"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "http://localhost/api",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
