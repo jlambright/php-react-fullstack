@@ -6,24 +6,13 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8000/api"
+            "url": "http://localhost/api"
         }
     ],
     "paths": {
         "/people": {
             "get": {
-                "summary": "Display a listing of the resource.",
-                "parameters": [
-                    {
-                        "name": "archived",
-                        "in": "query",
-                        "description": "Display archived people too.",
-                        "required": false,
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                ]
+                "summary": "Display a listing of the resource."
             },
             "post": {
                 "summary": "Store a newly created resource in storage."
@@ -72,21 +61,10 @@
         },
         "/group": {
             "get": {
-                "summary": "Display a listing of the resource.",
-                "parameters": [
-                    {
-                        "name": "archived",
-                        "in": "query",
-                        "description": "Display archived groups too.",
-                        "required": false,
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                ]
+                "summary": "Display a listing of the resource."
             },
             "post": {
-                "summary": "Store a newly created resource in storage."
+                "summary": "Store a newly created group resource in storage."
             }
         },
         "/group/{group}": {
