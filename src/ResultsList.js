@@ -8,7 +8,7 @@ class ResultsList extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8000/api/people")
+        fetch("http://localhost:3000/api/people")
           .then(response => response.json())
           .then(data => this.setState({ data: data.data }));
     }

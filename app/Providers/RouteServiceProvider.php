@@ -35,9 +35,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
+        if (request()->getPort() === 3000) {
+            $this->mapApiRoutes();
+        }
 
-        $this->mapWebRoutes();
+        if (request()->getPort() === 8080) {
+            $this->mapWebRoutes();
+        }
 
         //
     }
