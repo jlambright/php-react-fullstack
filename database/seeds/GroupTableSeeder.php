@@ -29,10 +29,13 @@ class GroupTableSeeder extends Seeder
 
         $created_at = $date->format('Y-m-d H:i:s');
         $updated_at = $date->addWeeks(rand(1, 52))->format('Y-m-d H:i:s');
+        $statuses = ['active', 'archived'];
 
         foreach ($group_names as $index=>$group_name) {
+            $status = array_rand($statuses,1);
             Group::create([
                 'name'=>$group_name,
+                'status'=>$statuses[$status],
                 'created_at'=>$created_at,
                 'updated_at'=>$updated_at
             ]);

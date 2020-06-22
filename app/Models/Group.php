@@ -14,17 +14,16 @@ use App\Models\Person;
 class Group extends Model
 {
     protected $table = 'groups';
-    protected $primaryKey = 'id';
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'status'
+    ];
 
 
     /**
      * The people that belong to a group.
      */
-    public function members()
-    {
-        return $this->belongsToMany(Person::class, 'group_members')
-            ->as('memberships')
-            ->withTimestamps();
+    public function members() {
+        return $this->belongsToMany(Person::class, 'group_members')->withTimestamps();
     }
 }

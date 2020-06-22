@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupsCollection;
+use App\Http\Resources\GroupsResource;
+use App\Models\Group;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
-use App\Http\Resources\PeopleCollection;
-use App\Http\Resources\PeopleResource;
-use App\Models\Person;
 
-class PeopleController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return GroupsCollection
      */
     public function index()
     {
-        return new PeopleCollection(Person::all());
+        return new GroupsCollection(Group::all());
     }
 
     /**
@@ -40,15 +39,12 @@ class PeopleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'    => 'required|max:255',
-            'last_name'     => 'required|max:255',
-            'email_address' => 'required|email',
-            'status'        => Rule::in(['active', 'archived'])
+            'name'    => 'required|max:255'
         ]);
 
-        $person = Person::create($request->all());
+        $group = Group::create($request->all());
 
-        return (new PeopleResource($person))
+        return (new GroupsResource($group))
             ->response()
             ->setStatusCode(201);
     }
@@ -56,22 +52,22 @@ class PeopleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id Person ID
-     * @return PeopleResource
+     * @param int $id Group ID
+     * @return GroupsResource
      */
     public function show($id)
     {
-        $person = Person::findOrFail($id)->load('memberships');
-        return new PeopleResource($person);
+        $group = Group::findOrFail($id)->load('members');
+        return new GroupsResource($group);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Group $group)
     {
         //
     }
@@ -80,28 +76,22 @@ class PeopleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Group $group)
     {
-        $person = Person::findOrFail($id);
-        $person->update($request->all());
-
-        return response()->json(null, 204);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
-        $person = Person::findOrFail($id);
-        $person->delete();
-
-        return response()->json(null, 204);
+        //
     }
 }
