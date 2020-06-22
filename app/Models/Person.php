@@ -25,9 +25,7 @@ class Person extends Model
     /**
      * The groups that the person belongs to.
      */
-    public function groups() {
-        return $this->belongsToMany(Group::class,'group_members')
-            ->as('memberships')
-            ->withTimestamps();
+    public function memberships() {
+        return $this->belongsToMany(Group::class,'group_members')->withTimestamps();
     }
 }

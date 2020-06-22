@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 use App\Http\Resources\PeopleCollection;
-use App\Http\Resources\PersonResource;
+use App\Http\Resources\PeopleResource;
 use App\Models\Person;
 
 class PeopleController extends Controller
@@ -48,7 +48,7 @@ class PeopleController extends Controller
 
         $person = Person::create($request->all());
 
-        return (new PersonResource($person))
+        return (new PeopleResource($person))
             ->response()
             ->setStatusCode(201);
     }
@@ -56,12 +56,13 @@ class PeopleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Person ID
+     * @return PeopleResource
      */
     public function show($id)
     {
-        return new PersonResource(Person::findOrFail($id));
+        $person = Person::findOrFail($id)->load('memberships');
+        return new PeopleResource($person);
     }
 
     /**

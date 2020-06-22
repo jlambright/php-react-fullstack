@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         // Populate the pivot table
         Person::all()->each(function ($person) use ($groupIds) {
-            $person->groups()->attach(
+            $person->memberships()->attach(
                 // Attaching 1-3 randomly selected group_ids to each person record
                 $groupIds->random(rand(1, 3))->pluck('id')->toArray()
             );

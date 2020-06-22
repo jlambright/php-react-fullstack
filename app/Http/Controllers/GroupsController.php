@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\GroupsCollection;
-use App\Http\Resources\GroupResource;
+use App\Http\Resources\GroupsResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
 
-class GroupController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return GroupsCollection
      */
     public function index()
     {
@@ -44,7 +44,7 @@ class GroupController extends Controller
 
         $group = Group::create($request->all());
 
-        return (new GroupResource($group))
+        return (new GroupsResource($group))
             ->response()
             ->setStatusCode(201);
     }
@@ -52,12 +52,13 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Group  $group
-     * @return \Illuminate\Http\Response
+     * @param int $id Group ID
+     * @return GroupsResource
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        //
+        $group = Group::findOrFail($id)->load('members');
+        return new GroupsResource($group);
     }
 
     /**
