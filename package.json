@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/helper-validator-identifier": "^7.10.3",
     "enzyme-to-json": "^3.3.5"
   },
   "jest": {
