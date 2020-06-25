@@ -1,0 +1,81 @@
+version: "3.7"
+services:
+    nginx:
+        image: nginx:stable-alpine
+        container_name: nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./docker/nginx/logs:/var/log/nginx
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+            - mariadb
+        networks:
+            - laravel
+    php:
+        container_name: php
+        tty: true
+        image: docker.io/bitnami/laravel
+        depends_on:
+          - mariadb
+        links:
+          - mariadb
+        env_file:
+          - .env
+        volumes:
+            - ./:/app
+        working_dir: /app
+        ports:
+            - 3000:3000
+        networks:
+            - laravel
+    mariadb:
+        container_name: mariadb
+        env_file: .env
+        image: mariadb:latest
+        ports:
+            - 3306:3306
+        volumes:
+            - ./docker/mariadb/data:/var/lib/mysql
+        networks:
+            - laravel
+    artisan:
+        container_name: artisan
+        tty: true
+        image: docker.io/bitnami/laravel
+        env_file: .env
+        volumes:
+            - ./:/app
+        depends_on:
+            - mariadb
+        working_dir: /app
+        entrypoint: ["php", "/app/artisan"]
+        networks:
+            - laravel
+    composer:
+        image: composer:latest
+        container_name: composer
+        env_file: .env
+        volumes:
+            - ./:/app
+        working_dir: /app
+        depends_on:
+            - php
+        networks:
+            - laravel
+
+    node:
+        image: node:lts
+        container_name: node
+        working_dir: /app
+        volumes:
+            - ./docker/node/:/var/log/myApp
+            - ./:/app
+        command: /bin/sh -c "/app/docker/node/yarn-bootstrapper.sh"
+        networks:
+            - laravel
+        ports:
+            - 8081:8081
+networks:
+  laravel:
