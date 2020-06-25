@@ -1,13 +1,22 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import {Container, Menu} from 'semantic-ui-react';
 import './Navigation.css';
 
 const Navigation = () => (
-    <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/people">People</NavLink>
-        <NavLink to="/groups">Groups</NavLink>
-    </nav>
+    <Menu>
+        <Container>
+            <Menu.Item>
+                <NavLink to="/">Home</NavLink>
+            </Menu.Item>
+            <Menu.Item>
+                <NavLink to="/people">People</NavLink>
+            </Menu.Item>
+            <Menu.Item>
+                <NavLink to="/groups">Groups</NavLink>
+            </Menu.Item>
+        </Container>
+    </Menu>
 );
 
 export default Navigation;
