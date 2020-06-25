@@ -70,9 +70,9 @@ services:
         container_name: node
         working_dir: /app
         volumes:
-            - ./docker/node/:/
+            - ./docker/node/:/var/log/myApp
             - ./:/app
-        command: /bin/sh -c "/yarn-bootstrapper.sh"
+        command: /bin/sh -c "/app/docker/node/yarn-bootstrapper.sh"
         networks:
             - laravel
         ports:
