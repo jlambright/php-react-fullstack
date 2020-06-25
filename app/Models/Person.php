@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Group;
 
 
 /**
@@ -14,6 +13,7 @@ use App\Models\Group;
  */
 class Person extends Model
 {
+    protected $hidden = ['pivot'];
     protected $table = 'people';
     protected $fillable = [
         'first_name',
