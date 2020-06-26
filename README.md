@@ -52,7 +52,7 @@ id, group_name, status
 - Docker & Docker Compose
 
 - Clone the repository
-  - `git clone git@github.com:BreezeChMS/coding-exercise-api-react.git && cd coding-exercise-api-react`
+  - `git clone git@github.com:jlambright/php-react-fullstack.git && cd php-react-fullstack`
 - Setup Laravel
   - `cp .env.example .env`
   - Edit .env with your mysql/mariadb connection information. 
