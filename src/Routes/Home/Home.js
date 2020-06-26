@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
 import './Home.css';
-import README from "./README.md";
+import README from './README.md';
 
 class Home extends Component {
     constructor(props) {
