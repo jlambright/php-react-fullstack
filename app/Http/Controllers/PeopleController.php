@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-
 use App\Http\Resources\PeopleCollection;
 use App\Http\Resources\PeopleResource;
 use App\Models\Person;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PeopleController extends Controller
 {
@@ -48,9 +47,7 @@ class PeopleController extends Controller
 
         $person = Person::create($request->all());
 
-        return (new PeopleResource($person))
-            ->response()
-            ->setStatusCode(201);
+        return new PeopleResource($person);
     }
 
     /**

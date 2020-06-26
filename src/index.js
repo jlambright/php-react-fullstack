@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Container, Header} from "semantic-ui-react";
-import {Navigation} from "./components";
+import {Container, Divider, Header} from "semantic-ui-react";
+import {CSVImportBlock, Navigation} from "./components";
 import {Error, Groups, Home, People} from "./Routes";
 
 const App = ({children}) => (
@@ -23,10 +23,29 @@ ReactDOM.render(
         <Router>
             <div>
                 <Navigation/>
+                <Divider/>
                 <Switch>
                     <Route path="/" component={Home} exact/>
-                    <Route path="/people" component={People}/>
-                    <Route path="/groups" component={Groups}/>
+                    <Route path={'/groups/upload'}>
+                        <Container>
+                            <CSVImportBlock
+                                endpoint={'groups'}
+                                inputId={'groupsCSVUpload'}
+                                label={'Select the CSV file for Groups import.'}
+                            />
+                        </Container>
+                    </Route>
+                    <Route path={'/groups'} component={Groups}/>
+                    <Route path={'/people/upload'}>
+                        <Container>
+                            <CSVImportBlock
+                                endpoint={'people'}
+                                inputId={'peopleCSVUpload'}
+                                label={'Select the CSV file for People import.'}
+                            />
+                        </Container>
+                    </Route>
+                    <Route path={'/people'} component={People}/>
                     <Route component={Error}/>
                 </Switch>
             </div>
