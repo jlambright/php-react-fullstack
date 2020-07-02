@@ -1,101 +1,87 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Person-Group API",
+        "title": "pplgrps",
+        "description": "Basic CRUD API for Groups and People.",
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://localhost"
+            "url": "http://localhost:3000/api"
         }
     ],
     "paths": {
-        "/api/people": {
+        "/people": {
             "get": {
-                "summary": "Display a listing of the resource."
+                "summary": "Display a listing of the resource.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "requestBody": []
+            }
+        },
+        "/people/{person}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "parameters": [
+                    {
+                        "name": "person",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/groups": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
             },
             "post": {
                 "summary": "Store a newly created resource in storage."
             }
         },
-        "/api/people/{person}": {
+        "/groups/{group}": {
             "get": {
                 "summary": "Display the specified resource.",
-                "parameters": [
-                    {
-                        "name": "person",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ]
-            },
-            "put": {
-                "summary": "Update the specified resource in storage.",
-                "parameters": [
-                    {
-                        "name": "person",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ]
-            },
-            "delete": {
-                "summary": "Remove the specified resource from storage.",
-                "parameters": [
-                    {
-                        "name": "person",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ]
-            }
-        },
-        "/api/groups": {
-            "get": {
-                "summary": "Display a listing of the resource."
-            },
-            "post": {
-                "summary": "Store a newly created group resource in storage."
-            }
-        },
-        "/api/groups/{group}": {
-            "get": {
-                "summary": "Display the specified resource.",
-                "parameters": [
-                    {
-                        "name": "group",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ]
-            },
-            "put": {
-                "summary": "Update the specified resource in storage.",
-                "parameters": [
-                    {
-                        "name": "group",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ]
-            },
-            "delete": {
-                "summary": "Remove the specified resource from storage.",
                 "parameters": [
                     {
                         "name": "group",
