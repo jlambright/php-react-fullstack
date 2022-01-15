@@ -5,7 +5,7 @@
   "dependencies": {
       "enzyme": "^3.10.0",
       "enzyme-adapter-react-16": "^1.14.0",
-      "marked": "^1.1.0",
+      "marked": "^4.0.10",
       "papaparse": "^5.2.0",
       "react": "^16.8.6",
       "react-csv-reader": "^3.1.0",
